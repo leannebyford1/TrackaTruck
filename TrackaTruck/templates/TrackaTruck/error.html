@@ -1,0 +1,35 @@
+<title>Error</title>
+{% extends "base.html" %}
+<!-- ... -->
+
+{% block head %}
+
+{% block title %} {{ block.super}}{% endblock %}{% endblock %}
+
+{% load l10n %}
+
+
+{% block content %}
+
+<ul>
+	{% if user.is_superuser %}
+	    <li><a class="nav" href="{% url 'admin:index' %}">Admin</a></li>
+	{% endif %}
+	    <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>	
+	    <li><a href="{% url 'help' %}">Help</a></li>
+	    <li><a href="{% url 'settings' %}">Settings</a></li>
+</ul>
+
+
+<h2>Error: </h2>
+
+{{ error }}
+
+
+
+
+<a class = "logout" href="{% url 'logout' %}">Logout</a>
+<a class = "return" href="{% url 'welcome' %}">Return</a>
+
+{% endblock %}

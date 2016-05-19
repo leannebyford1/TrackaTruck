@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<title>Login</title>
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% load staticfiles %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+		{% if user.is_authenticated %}
+		   {% if user.is_superuser %}
+			<li><a class="nav" href="{% url 'admin:index' %}">Admin</a></li> 
+			   {% endif %}
+			<li><a href="{% url 'settings' %}">Settings</a></li>
+		{% endif %}
+			<li><a href="{% url 'about' %}">About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>	
+			<li><a href="{% url 'help' %}">Help</a></li>
+			
+	</ul>
+
+	<!--Title of the page -->
+	<h2> Please Login Below:</h2>
+
+</head>
+
+<!--Main body of the page-->
+<body>
+	<div id = "loginform">
+		<form id="login" method="post">
+		{% csrf_token %}
+		<p style = "font-family:Calibri;">Username: <input id="username" maxlength="30" name="username" type="text" required autofocus=""/></p>
+		<p style = "font-family:Calibri;">Password: <input type="password" id="password" name="password" type="password" required /></p>
+
+		<div id="button">		
+			<input type="submit" value="Submit" />
+			<input type="reset" value="Reset Form" />
+			<!--<a href = "{% url 'password_reset' %}"> Forgot Password</a>-->
+			
+		</div>
+
+		</form>
+	</div>
+</body>
+
+<!--Return Button -->
+<footer>
+<a class = "return" href="{% url 'index' %}">Return</a>
+</footer>
+
+{% endblock %}

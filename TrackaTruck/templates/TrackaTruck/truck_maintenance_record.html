@@ -1,0 +1,63 @@
+<title>Truck Maintenance Check List Records </title>
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% load staticfiles %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+		<!-- if the user is logged in and is Admin the Admin Link will display -->
+		{% if user.is_superuser %}
+			<li><a class="nav" href="{% url 'admin:index' %}">Admin</a></li>
+		{% endif %}
+			<li><a href="{% url 'about' %}">About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>	
+			<li><a href="{% url 'help' %}">Help</a></li>
+			<li><a href="{% url 'settings' %}">Settings</a></li>
+	</ul>
+
+	<!--Title of the page -->
+	<h2>Truck Maintenance Check List Records</h2>
+</head>
+
+<!--Main body of the page-->
+<body>
+	<div id = "list">
+		<table>
+			<tr>
+				
+				<th>ID</th>
+				<th>  </th>
+				<th>Date</th>
+			    <th> Vehicle Registration</th>
+			    <th> </th>
+			</tr>
+
+			{% for m in obj %}
+			
+			<tr>
+			   <td> {{ m.id }} </td>
+			   <td><a class = "link" href="{% url 'edit_truck_maintenance_record' m.id %}">Edit Truck Maintenance Record</a></td>
+			   <td>{{ m.date_Completed }}</a></td>
+			   <td> {{ m.vehicle_Reg }} </td>
+			   <td> <a class = "link" href = "{% url 'delete_truck_maintenance_record' m.id %}" onclick = "return confirm('Truck Maintenance Record will be deleted, are you sure?')">Delete Truck Maintenance Record</a></td>
+			</tr>
+
+			{% empty %} 
+			<h3> There are no records in the Truck Maintenance Check Sheet table, please add a Truck Maintenance Check Sheet </h3>
+			{% endfor %}
+		</table>
+	</div>	
+</body>
+	
+<!--Logout and Return Buttons -->
+<footer>
+	<a class = "logout" href="{% url 'logout' %}">Logout</a>
+	<a class = "return" href="{% url 'welcome' %}">Return</a>
+</footer>
+
+{% endblock content %}

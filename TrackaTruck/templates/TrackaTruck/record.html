@@ -1,0 +1,89 @@
+<title>Add Record</title>
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% load staticfiles %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+		<!-- if the user is logged in and is Admin the Admin Link will display -->
+		{% if user.is_superuser %}
+			<li><a class="nav" href="{% url 'admin:index' %}">Admin</a></li>
+		{% endif %}
+			<li><a href="{% url 'index' %}">About</a></li>
+			<li><a href="{% url 'index' %}">Contact</a></li>	
+			<li><a href="{% url 'login' %}">Help</a></li>
+			<li><a href="{% url 'logout' %}">Settings</a></li>
+	</ul>
+
+	<!--Title of the page -->
+	<h2>Add Record </h2>
+	
+	<!--Date -->
+	<p class="date"><b>Date:</b> {{ day }}.{{ month}}.{{ year }} <br> {{ hName }}</p>
+</head>
+
+
+<!--Main body of the page-->
+<body>
+<div id = "records">
+{% if other_records %}
+<b>Records for This Day</b></br>
+ <hr>
+{% for record in other_records %}
+ 		{% if record.vehicle_trailer == 'Truck' %}
+			{{ record.title }} - {{ record.vehicle_Reg }} </br><hr>
+		{% else %}
+		{% if record.vehicle_trailer == 'Trailer' %}
+			{{ record.title }} - {{ record.trailer_Number }} </br><hr>
+		{% endif %}
+		{% endif %}
+{% endfor %}
+{% endif %}
+</div>
+
+{% if bankholiday and weekDay %}
+	onclick = "return confirm('Are you sure you want to add a record for Good Friday?')"
+	<p> Bank Holiday </p>
+{% endif %}
+	<div id = "recordform">
+		<form method="POST">
+		{% csrf_token %}
+		{% for record in records.forms %}
+		{{ records.management_form }}
+		<!--Hidden Field -->
+		{{ record.id.as_hidden}}
+		{{ record.date.as_hidden }} 
+		
+		<!-- Record Form -->
+			<div class = "styled-select">
+				{% if record.title.value == 'Please Select' %}
+					<p>Truck/Trailer: {{ record.vehicle_trailer }}<strong><font size="2"; color="red"> * Required</font></strong></p>
+					<p>Title: {{ record.title }} <strong><font size="2"; color="red"> * Required</font></strong></p>
+					<p>Vehicle Registration: {{ record.vehicle_Reg }} <strong><font size="2"; color="red"> * Only Required when Truck is selected</font></strong></p>
+					<p>Trailer Number: {{ record.trailer_Number }}<strong><font size="2"; color="red"> * Only Required when Trailer is selected</font></strong></p>
+					<p>Time: {{ record.time }} <strong><font size="2"; color="red"> * Only Required when Title is MOT</font></strong></p>
+					<p>Notes: {{ record.notes }}</p>
+					<p>Reminder: {{ record.reminder }}</p>
+			</div>
+				{% endif %}
+		{% endfor %}
+			<div id="button">
+				<input type="submit" value="Save" onclick = "return confirm('Record has been added')"/> 
+				<input type = "reset" value = "Reset"/>
+			</div>
+		</form>
+	</div>
+</body>
+
+<!--Logout and Return Buttons -->
+<footer>
+	<a class = "logout" href="{% url 'logout' %}">Logout</a>
+	<a class = "return" href="{% url 'calendar' %}">Return</a>
+</footer>
+
+{% endblock content %}

@@ -1,0 +1,38 @@
+<title>Trailer Maintenance Check Sheet </title>
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% load staticfiles %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+		<!-- if the user is logged in and is Admin the Admin Link will display -->
+		{% if user.is_superuser %}
+			<li><a class="nav" href="{% url 'admin:index' %}">Admin</a></li>
+		{% endif %}
+			<li><a href="{% url 'about' %}">About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>	
+			<li><a href="{% url 'help' %}">Help</a></li>
+			<li><a href="{% url 'settings' %}">Settings</a></li>
+	</ul>
+
+	<!--Title of the page -->
+	<h2>Road Haulage Association Limited - <br> Trailer Maintenance Form</h2>
+</head>
+
+<!--Main body of the page-->
+<body>
+	<p class = "text">Trailer Maintenance Check Sheet Page is a success</p>
+</body>
+
+<!--Logout and Return Buttons -->
+<footer>
+	<a class = "logout" href="{% url 'logout' %}">Logout</a>
+	<a class = "return" href="{% url 'maintenance' %}">Return</a>
+</footer>
+
+{% endblock content %}

@@ -1,0 +1,1008 @@
+html,body {
+    	height: 100%;
+    	margin: 0px;
+	overflow-x:hidden;
+    	padding: 0px;
+	width: 100%;
+}
+
+/* Header One */
+h1 {
+	color: black;
+	font-family: Segoe Print;
+	position: relative;
+	text-align: right;	
+	top:-180px;
+}
+
+/* Header Two */
+h2 {
+	color: black;
+	font-family: Calibri;
+	font-style:italic;
+	position: relative;
+	text-align: center;
+	top:-20px;	
+}
+
+/* Header Three */
+h3 {
+	color: black;
+	font-family: Calibri;
+	font-style:italic;
+	position: relative;
+	text-align: center;
+	top:150px;	
+}
+
+
+/* Line that separates the title of the application to the rest of the page */	
+#bar {
+	background-color:#0098cc;
+	height: 20px;
+	left: 0px;
+	position: relative;
+	top: -90px;
+}
+
+#logo{
+	top: -30px;
+}
+/* Navigation Menu  */
+ul {
+	background-color: #f1f1f1;
+    font-family:Calibri;
+    font-size: 18px;
+    list-style-type: none;
+	margin: 0;
+    padding: 0;
+	position:absolute;
+	top:310px;
+    width: 200px;
+}
+
+li a {
+	color: #000;
+    	display: block;
+    	padding: 8px 0 8px 16px;
+    	text-decoration: none;
+	
+}
+
+/* Change the link color on hover */
+li a:hover {
+    	background-color: #0098cc;
+    	color: white;
+}
+
+li.active {
+    	background-color: #4CAF50;
+    	color: white;
+}
+
+/* Login Button */
+a.login { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:30px;
+	left: 650px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:450px;
+	width:70px;
+	
+}
+
+/* Change the link color on hover */
+a.login:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:30px;
+	padding: 5px;
+	width: 70px;
+	font-style:italic;
+}
+
+/* Add Truck Button */
+a.truck { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:30px;
+	left: 370px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:240px;
+	width:100px;
+	
+}
+
+/* Change the link color on hover */
+a.truck:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:30px;
+	padding: 5px;
+	width: 100px;
+	font-style:italic;
+}
+
+/* Add Trailer Button */
+a.trailer { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:30px;
+	left: 800px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:240px;
+	width:100px;
+	
+}
+
+/* Change the link color on hover */
+a.trailer:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:30px;
+	padding: 5px;
+	width: 100px;
+	font-style:italic;
+}
+
+/* Tracker Button */
+a.tracker { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:30px;
+	left: 370px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:500px;
+	width:100px;
+	
+}
+
+/* Change the link color on hover */
+a.tracker:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:30px;
+	padding: 5px;
+	width: 100px;
+	font-style:italic;
+}
+
+/* Calendar Button */
+a.calendar { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:30px;
+	left: 800px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:500px;
+	width:100px;
+}
+
+/* Change the link color on hover */
+a.calendar:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:30px;
+	padding: 5px;
+	width: 100px;
+	font-style:italic;
+}
+
+/* Maintenance Button */
+a.maintenance { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:50px;
+	left: 570px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:500px;
+	width:130px;
+}
+
+/* Change the link color on hover */
+a.maintenance:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:50px;
+	padding: 5px;
+	width: 130px;
+	font-style:italic;
+}
+
+/* Truck Maintenance Button */
+a.truck_maintenance { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:80px;
+	left: 450px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:350px;
+	width:130px;
+}
+
+/* Change the link color on hover */
+a.truck_maintenance:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:80px;
+	padding: 5px;
+	width: 130px;
+	font-style:italic;
+}
+
+/*Truck Maintenance Check Records */
+a.truck_maintenance_record{
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:90px;
+	left: 450px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:530px;
+	width:140px;
+}
+
+/* Change the link color on hover */
+a.truck_maintenance_record:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:90px;
+	padding: 5px;
+	width: 140px;
+	font-style:italic;
+}
+/* Trailer Maintenance Button */
+a.trailer_maintenance { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:80px;
+	left: 900px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:350px;
+	width:130px;
+}
+
+/* Change the link color on hover */
+a.trailer_maintenance:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:80px;
+	padding: 5px;
+	width: 130px;
+	font-style:italic;
+}
+
+/* Truck List Button */
+a.truck_list { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:30px;
+	left: 1250px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:310px;
+	width:70px;
+}
+
+/* Change the link color on hover */
+a.truck_list:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:30px;
+	padding: 5px;
+	width: 70px;
+	font-style:italic;
+}
+
+/* Trailer List Button */
+a.trailer_list { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:30px;
+	left: 1250px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:390px;
+	width:70px;
+}
+
+/* Change the link color on hover */
+a.trailer_list:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:30px;
+	padding: 5px;
+	width: 70px;
+	font-style:italic;
+}
+
+/* Record List Button */
+a.record { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:30px;
+	left: 1250px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:470px;
+	width:70px;
+}
+
+/* Change the link color on hover */
+a.record:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:30px;
+	padding: 5px;
+	width: 70px;
+	font-style:italic;
+}
+
+/* Logout Button */
+a.logout { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:30px;
+	left: 1250px;
+	padding:5px;
+	position: fixed;
+	text-align:center;
+	text-decoration:none;
+	top:120px;
+	width:70px;
+}
+
+/* Change the link color on hover */
+a.logout:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:30px;
+	padding: 5px;
+	width: 70px;
+	font-style:italic;
+}
+
+/* Return Button*/
+a.return { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:18px;
+	height:20px;
+	left: 290px;
+	padding:5px;
+	position: fixed;
+	text-align:center;
+	text-decoration:none;
+	top:210px;
+	width:70px;
+}
+
+/* Change the link color on hover */
+a.return:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:20px;
+	padding: 5px;
+	width: 70px;
+	font-style:italic;
+}
+
+/* Change Password Button */
+a.changePassword { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:22px;
+	height:38px;
+	left: 850px;
+	padding:5px;
+	position: absolute;
+	text-align:center;
+	text-decoration:none;
+	top:360px;
+	width:180px;
+}
+
+/* Change the link color on hover */
+a.changePassword:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	font-style:italic;
+	height:38px;
+	padding: 5px;
+	width: 180px;
+	
+}
+
+/* Link in the Truck and Trailer List*/
+a.link {
+	color:#000099;
+	text-decoration:None;
+}
+
+
+a.return_checklist { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:18px;
+	height:20px;
+	left: -140px;
+	padding:5px;
+	position: fixed;
+	text-align:center;
+	text-decoration:none;
+	top:-160px;
+	width:70px;
+	
+}
+
+/* Change the link color on hover */
+a.return_checklist:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:20px;
+	padding: 5px;
+	width: 70px;
+	font-style:italic;
+}
+
+/* Month Link */
+a.month {
+	color:black;
+	text-decoration:none;
+}
+
+/* Edit Truck Link */
+a.edit {
+	color:black;
+	text-decoration:none;
+} 
+
+/* Previous Year Button */
+a.prev { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:20px;
+	height:25px;
+	left: 300px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:-70px;
+	width:150px;
+}
+
+/* Change the link color on hover */
+a.prev:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:25px;
+	padding: 5px;
+	width: 150px;
+	font-style:italic;
+}
+
+/* Next Year Button */
+a.next { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:20px;
+	height:25px;
+	left: 800px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:-70px;
+	width:150px;
+}
+
+/* Change the link color on hover */
+a.next:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:25px;
+	padding: 5px;
+	width: 150px;
+	font-style:italic;
+}
+
+/* Delete Button */
+a.delete { 
+	background-color:#0098cc;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color:white;
+	font-family: Calibri;
+	font-size:16px;
+	height:20px;
+	left: 350px;
+	padding:5px;
+	position:absolute;
+	text-align:center;
+	text-decoration:none;
+	top:290px;
+	width:150px;
+}
+
+/* Change the link color on hover */
+a.delete:hover {
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #888888;
+	color: #0098cc;
+	height:20px;
+	padding: 5px;
+	width: 150px;
+	font-style:italic;
+}
+/* Text on Index/Welcome Page */
+p.text {
+	font-family: Calibri;
+	font-size:20pt;
+	left: 380px;
+	position:absolute;
+	top:300px;
+	width:700px;
+}
+
+/* Text in Body*/
+p.bodytext {
+	font-family: Calibri;
+	font-size:14pt;
+	left: 380px;
+	position:absolute;
+	top:300px;
+	width:700px;
+}
+
+/* Heading between text in help page */
+p.titleone {
+	font-family: Calibri;
+	font-size:18pt;
+	left: 380px;
+	position:absolute;
+	top:360px;
+	width:700px;
+}
+
+/* Text on Change PasswordPage */
+p.changePasswordText {
+	font-family: Calibri;
+	font-size:14pt;
+	text-align:center;
+	left: 380px;
+	position:absolute;
+	top:230px;
+	width:700px;
+}
+
+/* Text for Welcome ... on Welcome Page */
+p.greeting {
+	font-family: Calibri;
+	left: 900px;
+	position:absolute;
+	top:190px;
+}
+
+/* Text for Company Name: */
+p.company {
+	font-family: Calibri;
+	left: 300px;
+	position:absolute;
+	top:140px;
+}
+
+
+p.headingone {
+	color: black;
+	font-family: Calibri;
+	font-style:italic;
+	font-size:14pt;
+	position: relative;
+	text-align: left;
+	top:40px;
+}
+p.date{
+	color:black;
+	font-family:Calibri;
+	font-size: 14pt;
+	height: 20px;
+	width: 150px;
+	border-style:solid;
+	border-color:black;
+	top:200px;
+	position:absolute;
+	left: 1230px;
+}
+
+/* year heading */
+#yearheading{
+	color: black;
+	font-family: Segoe Print;
+	font-size: 26pt;
+	position: relative;
+	text-align: center;	
+	top:-70px;
+}
+
+/* month heading */
+#monthheading{
+	color: black;
+	font-family: Segoe Print;
+	font-size: 26pt;
+	position: relative;
+	text-align: center;	
+	top:-70px;
+}
+
+#records{
+	color:#0098cc;
+	font-family:Calibri;
+	font-size: 14pt;
+	height: auto;
+	width: auto;
+	border-style:solid;
+	border-color:border-style:solid;
+	border-color:black;
+	text-align:center;
+	top:280px;
+	position:absolute;
+	left: 1170px;
+}
+
+
+/* Button for the Forms */
+#button {
+	font-family:Calibri;
+	text-align:center;
+}
+
+/* Login Form */
+#loginform {
+	font-family:Calibri;
+	position: relative;
+	top: 10px;
+	height: 120px;
+	width: 250px;
+	margin: 0 auto;
+	border-style:solid;
+	border-color:black;
+	padding: 25px;
+}
+
+/* Add Truck Form */
+#truckform {
+	font-family:Calibri;
+	position: relative;
+	top: 10px;
+	height: 200px;
+	width: 350px;
+	margin: 0 auto;
+	border-style:solid;
+	border-color:black;
+	padding: 25px;
+}
+/* Add Trailer Form */
+#trailerform {
+	font-family:Calibri;
+	position: relative;
+	top: 10px;
+	height: 150px;
+	width: 400px;
+	margin: 0 auto;
+	border-style:solid;
+	border-color:black;
+	padding: 25px;
+}
+
+/* Add Record Form */
+#recordform {
+	font-family:Calibri;
+	position: relative;
+	top: 10px;
+	height: 350px;
+	width: 500px;
+	margin: 0 auto;
+	border-style:solid;
+	border-color:black;
+	padding: 25px;
+}
+
+/* Change Password Form */
+#passwordform {
+	font-family:Calibri;
+	position: relative;
+	top: 160px;
+	height: 55px;
+	width: 350px;
+	margin: 0 auto;
+	border-style:solid;
+	border-color:black;
+	padding: 25px;
+}
+
+/* Other Records */
+#otherRecords {
+	font-family:Calibri;
+	position: relative;
+	top: -330px;
+	left:500px;
+	height: 350px;
+	width: 200px;
+	margin: 0 auto;
+	border-style:solid;
+	border-color:black;
+	padding: 25px;
+}
+
+/* Add Truck Maintenance Form */
+#truckmaintenanceform {
+	font-family:Calibri;
+	position: relative;
+	top: 80px;
+	height: 6600px;
+	width: 900px;
+	margin: 0 auto;
+	border-style:solid;
+	border-color:black;
+	padding: 25px;
+}
+
+/* Month Table */
+#month{
+	color:black;
+	position:relative;
+	left:100px;
+	top:-10px;
+	font-family:Segoe Print;
+	font-size:18pt;
+}
+
+/* Map */
+#map {
+	position: relative;
+	top: -10px;
+	left: 240px;
+	margin: 0 auto;
+	padding: 25px;
+}
+
+/* Select in Form */
+.styled-select select {
+    font-size: 12pt;
+    font-family:Calibri;
+}
+
+/*
+input { 
+	font-size: 12pt;
+	font-family:Calibri; 
+}
+
+text {
+	font-size: 12pt;
+	font-family:Calibri; 
+}
+*/
+/* Table Headings  */
+th{
+	font-family:Segoe Print;
+	background-color:#0098cc;
+	color:white;
+	border: 1px solid black;
+}
+
+/*Body of Tables */
+td {
+	border: 0.5px solid black;
+}
+
+/* Tables in Truck, Record Lists */
+#list {
+	font-family:Calibri;
+	font-size:18pt;
+	left:370px;
+	width:900px;
+	height:150px;
+	top:-40px;
+	position:relative;	
+	border-collapse: collapse;
+	text-decoration:none;
+	
+}
+/* Tables in Record Lists */
+#recordlist {
+	font-family:Calibri;
+	font-size:18pt;
+	left:230px;
+	width:1200px;
+	height:150px;
+	top:-20px;
+	position:relative;	
+	border-collapse: collapse;
+	text-decoration:none;
+	
+}
+
+/* Tables in Trailer List */
+#trailer_list {
+	font-family:Calibri;
+	font-size:18pt;
+	left:470px;
+	width:900px;
+	height:150px;
+	top:-20px;
+	position:relative;	
+	border-collapse: collapse;
+	text-decoration:none;
+	
+}
+
+/* Calendar */
+#year {
+	color:black;
+	position:relative;
+	left:100px;
+	top:-30px;
+	font-family:Segoe Print;
+	font-size:18pt;
+}
+
+
+/* Maintenance Check List Form */
+#checklist {
+	font-family:Calibri;
+	position: relative;
+	top: 80px;
+	left:100px;
+	height: 6500px;
+	width: 1000px;
+	margin: 0 auto;
+	border-style:solid;
+	border-color:black;
+	padding: 25px;
+}
+
+/* Maintenance Check List Button */
+#checklistButton {
+	font-family:Calibri;
+	text-align:center;
+	top:1500px;
+}

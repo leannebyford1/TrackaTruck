@@ -1,0 +1,33 @@
+<!--Title in the Tab is the same name as the application that has been extended 
+	from the base.html file -->
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% block head %}
+
+{% block title %} {{ block.super}}{% endblock %}{% endblock %}
+
+{% load l10n %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+	    <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        <li><a href="{% url 'help' %}">Help</a></li>
+	</ul>
+</head>
+
+<!--Main body of the page-->
+<body>
+	<p class = "text" style = "text-align:center;"><b>Welcome to Track-A-Truck.</b><br> A website which is used to track your fleet 
+			and workshop. <br>Please login below to access your account.</p>
+
+	<a class = "login" href="{% url 'login' %}">Login</a>
+</body>
+
+{% endblock content %}
+

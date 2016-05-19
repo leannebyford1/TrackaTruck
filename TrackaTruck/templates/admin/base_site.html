@@ -1,0 +1,61 @@
+{% extends "./admin/base.html" %}
+
+{% load i18n %}
+
+
+
+{% block extrahead %}
+<style type="text/css">
+body { 
+	font-family:"Calibri, Trebuchet MS",sans-serif;     
+} 
+
+#header { 
+	background:#0098cc; 
+	border-bottom: 10px solid blue;
+	text-align:center;
+	font-family:Calibri; 
+	} 
+
+thead th, 
+
+tfoot td, { 
+	background:#0098cc !important; 
+	font-family:Calibri;
+	} 
+
+.module h2, .module caption, .inline-group h2 { 
+	font-color:#fff;
+	background: #0098cc !important; 
+	font-family:Calibri;
+	font-size:16px;
+	} 
+
+.module caption a { 
+	color: white !important; 
+	font-size: 18px;
+	font-family:Calibri; 
+	} 
+
+table.orderable tbody tr td:first-child { 
+	background: #0098cc !important; 
+	font-family:Calibri;
+	} 
+
+h1#site-name { 
+	font-size: 24px; 
+	font-weight: bold; 
+	color: #FFF; 
+	font-family:Calibri;
+	} 
+
+</style> 
+{% endblock %}
+
+{% block title %}{{ title }} | {% trans 'Track-A-Truck Site admin' %}{% endblock %}
+
+{% block branding %}
+	<h1 id="site-name">{% trans 'Track-A-Truck Administration' %}</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

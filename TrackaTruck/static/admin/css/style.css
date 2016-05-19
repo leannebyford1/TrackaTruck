@@ -1,0 +1,208 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+p.pos_fixed {
+	font-family: arial;
+	font-size: 300%;
+	position: relative;
+	top: -120px;
+	bottom: 10px;
+	left: 450px;
+}
+
+p.pos_ind {
+	font-family: arial;
+	font-size: 100%;
+	position: relative;
+	top: -220px;
+	bottom: 10px;
+	left: 900px;
+}
+
+p.pos_log {
+	font-family: arial;
+	font-size: 200%;
+	position: relative;
+	top: -50px;
+	bottom: 10px;
+	left: 500px;
+}
+
+H1 {
+	font-family: arial;
+	color: black;
+	text-align: center;
+	position: relative;
+	
+}
+	
+H2 {
+	font-family: arial;
+	color: black;
+	text-align: left;
+}
+
+H3 {
+	font-family: arial;
+	color: red;
+	text-align: center;
+}
+
+table tr, td {
+	font-family: arial;
+	border: 2px solid black;
+	
+}
+
+table {
+	width: 75%;
+	height: 150px;
+}
+
+a {
+	font-family: arial;
+	text-decoration: none;
+}
+
+#navigation {
+	font-family: arial;
+    	background-color:#F8931D;
+    	color: white;
+    	text-align: center;
+    	padding: 5px;
+	left: 0px;
+	top: -150px;
+	height: 25px;
+	position: relative;
+		      
+}
+
+#year {   	
+    	color: black;
+    	padding: 5px;
+	left: 0px;
+	top: -180px;
+	position: relative;
+		      
+}
+
+#month {   	
+    	color: black;
+    	padding: 5px;
+	left: 0px;
+	top: -215px;
+	position: relative;
+		      
+}
+
+.reminders {
+	position: fixed;
+	top: 229px;
+	left: 2px;
+	width: 120px;
+	margin: 5px;
+	border-style: solid;
+	border-width: medium;
+	border-color: red;
+}
+
+#otherusers {
+	position: absolute;
+	top: 229px;
+	border-style: solid;
+	border-color: red;
+	padding: 5px;
+	left: 20px;
+}
+
+#date {
+	font-family: arial;
+	position: absolute;
+	top: 229px;
+	right:100px;
+	border-style: solid;
+	border-color: red;
+	padding: 5px;
+}
+
+#form {
+	font-family:arial;
+	position:absolute;
+	top:420px;
+	left:420px;
+	border-style:solid;
+	border-color:#F8931D;
+	padding: 10px;
+	
+}
+
+p.subhead {
+	position: absolute;
+	top: 150px;
+	left: 20px;	
+}
+	
+a.nav:link, a.nav:visited {
+	background-color:#F8931D;
+	box-shadow: 5px 5px 5px #888888;
+	color: white;	
+	width: 120px;
+	border: 1px solid black;
+	padding: 5px;
+	
+}
+
+a.nav:hover {
+	background-color: white;
+	box-shadow: 5px 5px 5px #888888;
+	color: red;
+	width: 120px;
+	border: 1px solid black;
+}
+
+li {
+	display: inline;
+	width: 120px;
+	padding: 3px;
+}
+
+ul {
+    	list-style-type: none;
+    	margin: 0;
+    	padding: 0;
+}	
+
+#message {
+	text-color: red;
+	posiion: relative;
+	top: 150px;
+}
+
+a.del:link, a.del:visited {
+	background-color:red;
+	box-shadow: 5px 5px 5px #888888;
+	color: white;	
+	width: 120px;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+.sidebar {
+	width: 1%;
+	position: relative;
+}
+
+.options {
+	font-family: Arial;
+	postion: relative;
+	font-size: 20px;
+	color:red;
+	right: -200px;
+	padding-left: 5px;
+}

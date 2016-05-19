@@ -1,0 +1,26 @@
+<title>Error</title>
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% load staticfiles %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+		<li><a href="{% url 'about' %}">About</a></li>
+		<li><a href="{% url 'contact' %}">Contact</a></li>
+		<li><a href="{% url 'help' %}">Help</a></li>
+	</ul>
+</head>
+
+<!--Main body of the page-->
+<body>
+	<p class = "text"> You have entered an incorrect user name or password. 
+	</br> Click the Return button to go back to the Log in page to try again.  </p>
+	<a class = "login" href="{% url 'index' %}">Return</a>
+</body>
+
+{% endblock %}

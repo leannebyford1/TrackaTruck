@@ -1,0 +1,233 @@
+<title>Help </title>
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% block head %}
+
+{% block title %} {{ block.super}}{% endblock %}{% endblock %}
+
+{% load l10n %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+		<!-- if the user is logged in and is Admin the Admin and Settings Link will display 
+				and if the user is logged in but is not an Admin user the Settings link will display -->
+		{% if user.is_authenticated %}
+		   {% if user.is_superuser %}
+			<li><a class="nav" href="{% url 'admin:index' %}">Admin</a></li> 
+			   {% endif %}
+			<li><a href="{% url 'settings' %}">Settings</a></li>
+		{% endif %}
+			<li><a href="{% url 'about' %}">About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>	
+			<li><a href="{% url 'help' %}">Help</a></li>
+			
+	</ul>
+	
+	<!--Title of the page -->
+	<h2>Help </h2>
+</head>
+
+<!-- Main body of the page -->
+<body>
+	<p class = "bodytext"> Below is a guide that will help you with the application, if there is any information that you are looking for and it is not 
+			listed, then please contact us. <br>
+			<br>
+			<br>
+			<b>Index Page</b><br>
+			This will be the first page that you should see. 
+			This will give a brief description of what the application is about, and to ask you to click the login button. 
+			In the menu the only links that you should see is About, Contact and Help. <br>
+			<br>
+			<br>
+			<b> Login Page</b><br>
+			When you click on the log in button this page will display. 
+			This will allow you to input your username and password into the form so that you are able to access your account. 
+			The return button will take you back to the Index page. If you have entered an incorrect username or password then the application should display a 
+			page, so that you can go back to the Login page to re enter your details. <br>
+			<br>
+			<br>
+			<b>Welcome Page </b><br>
+			The welcome page will display once you have logged in. Your username and the name of the company will appear. You can either choose the tracker, calendar or maintenance checks. 
+			You can choose to see a list of trucks, trailers or Calendar Records by clicking on the buttons, and you can also choose to add either a truck or trailer.  
+			Also at the top of the page will be reminders box which will let you know if there is an event for the next day. <br>
+			<br>
+			<br>
+			<b>Tracker Page</b><br>
+			The tracker will display a map of the UK, which will have pointers to where each truck is located. 
+			There will be a key on the side of the page describing which pointer corresponds to each truck. 
+			The return button will take you back to the Welcome Page.<br>
+			<br>
+			<br>
+			<b>Add a New Truck</b><br>
+			You can add a new truck, by filling out a form. The vehicle registration is to identify the truck, 
+			the make and model of the truck are extra boxes which you will need to fill out, this should be easier for you to identify when adding a new record  or maintenance check form, 
+			the year of vehicle is when the vehicle was made. When you have clicked on the save button, it should add the new truck to the database so that you can choose the truck in the calendar when a new record is entered. 
+			The return button should take you back to the Welcome Page. <br>
+			<br>
+			<br>
+			<b>Edit a Trailer</b><br>
+			You can edit an existing truck by going onto the Truck List Page and clicking on the edit link on the truck that you need to edit, this edit truck page will display the same form as the add truck page however instead of the blank form, 
+			it will show the form which has already been filled in according to which edit link you have clicked on. 
+			When you click on save a message box will appear to say that the truck record has been updated. The return button will take you back to the Truck Records List. <br>
+			<br>
+			<br>
+			<b>Truck Record List Page </b><br>
+			You are able to see all of the trucks that have already been added to the application. This page will display in a table all of the trucks with the vehicle registration, make and model of the truck and the year that each truck was made. 
+			By the side of each truck there will be an edit link which you can click on to edit a truck, or at the other end of the table you can delete the truck so that it is not in the application anymore, when you click on the delete link a message box will appear to confirm to you if you are sure that they want to delete the truck. 
+			At the end of the table there will be a link to add another truck. 
+			Also if there are no entries in 
+			this table then there will be a message to say that there are no records in the truck table so you will have to add a truck. The return button will take you back to the welcome page.
+			<br>
+			<br>
+			<b>Trailer Record List Page </b><br>
+			You  can see all of the trailers that have already been added to the application. This page will display in a table all of the trailers with the trailer number and type, and the year that each trailer was made.
+			By the side of each trailer there will be an edit link which you can click on to edit a trailer, 
+			or at the other end of the table you can delete the trailer so that it is not in the application anymore,
+			when you click on the delete link a message box will appear to confirm to you if you are sure that you want to delete the trailer. 
+			At the end of the table there will be a link to add another trailer. 
+			Also if there are no entries in this table then there will be a message to say that there are no records in the trailer table so you will have to add a trailer. 
+			The return button will take you back to the welcome page.<br>
+			<br>
+			<br>
+			<b>Calendar Year Page</b><br>
+			The calendar will show when MOT’s, tax and maintenance checks are due on each truck and trailer. 
+			If you click on the calendar button a page will display a table of months for the current year, you can click on the previous year button to go 
+			back to the previous year or go to the next year by clicking on the next year button if you wish. If you click on a month in that year then you are
+			able to go into that month to input a record. There will be a reminder as to when the next MOT, Tax and check-up is due.
+			This would most likely be a couple of days in advance or a week in advance so that the company is able to prepare. The return button will take you back to the Welcome Page.<br>
+			<br>
+			<br>
+			<b>Calendar Month Page</b><br>
+			The month page will show the days for that month and the records that have already been put in the application for the days in that month.  
+			To enter a record then the user would need to click on a day. 
+			The return button will take you back to the Calendar Page.<br>
+			<br>
+			<br>
+			<b>Calendar Add Record Page </b><br>
+			This is a form in which you will need to fill out so that records can be seen in the calendar. The title is whether the entry is MOT, Tax or maintenance checks. 
+			The vehicle/trailer is the trucks and trailers in which the MOT, Tax or maintenance check corresponds to. 
+			The vehicle registration is a list of vehicle registrations in which you should have entered when adding a new truck, you would need to click on the registration number that the title corresponds to.
+			The trailer number is a list of trailer numbers, in which you should have entered when adding a new trailer, you would need to click on the trailer number that the title corresponds to. 
+			The time of the MOT is the time in which the MOT will take place, this does not need to be entered if the title is tax or maintenance check. 
+			The notes input box is an extra box which is not required to be filled out, this is if you need to add anything extra to the record. 
+			The remind check box will need to be checked if you would like the reminder box to display on the Welcome and Calendar page. 
+			The return button will take you back to the Calendar Page.<br>
+			<br>
+			<br>
+			<b>Record List Page</b><br>
+			You can see all of the records that have already been added to the calendar. This page will display in a table all of the records with the vehicle/trailer,
+			the title, vehicle registration, trailer number, date of MOT, Tax or Maintenance Check, time of MOT and notes . 
+			By the side of each record there will be an edit link which you can click on to edit a record, or at the other end of 
+			the table you can delete the record so that it is not in the application anymore, when you click on the delete link a message box will appear to confirm to you if you are sure that you want to delete the record. 
+			At the end of the table there will be a link to the calendar. 
+			Also if there are no entries in this table then there will be a message to say that there are no records in the record table so you will have to add a record in the calendar. The return button will take you back to the calendar page.<br>
+			<br>
+			<br>
+			<b>Edit Record Page</b><br>
+			You can edit an existing truck by going onto the Truck List Page and clicking on the edit link on the truck that you need to edit, this edit record page will display the same 
+			form as the add record page however instead of the blank form, it will show the form which has already been filled in according to which edit link you clicked on. 
+			When you click save a message box will appear to say that the record has been updated. 
+			The return button will take you back to the Records List.<br> 
+			<br>
+			<br>
+			<b>Maintenance Checklist Page</b><br>
+			The maintenance check list shows the truck and trailer maintenance check forms. 
+			These are separate buttons in which you can choose the one which is needed at that time. 
+			There are also buttons to see the lists of maintenance check forms. 
+			The return button will take you back to the Welcome Page.<br>
+			<br>
+			<br>
+			<b>Truck Maintenance Check Page</b><br>
+			The truck maintenance check list shows a form which you will have to complete when someone checks over the truck. 
+			There are different options for each list and such as if it has been completed or if it requires attention. 
+			The return button will take you back to the truck maintenance check list Records Page. <br>
+			<br>
+			<br>
+			<b>Trailer Maintenance Check Page</b><br>
+			The truck maintenance check list shows a form which you will have to complete when someone checks over the trailer. 
+			There are different options for each list and such as if it has been completed or if it requires attention. 
+			The return button will take you back to the truck maintenance check list Records Page.  <br>
+			<br>
+			<br>
+			<b>Truck Maintenance Check Records Page</b><br>
+			You can see all of the truck maintenance check records that have already been added to the application. 
+			This page will display in a table all of the check records with the vehicle registration, date and company name. By the side of each check record 
+			there will be an edit link which you can click on to edit the form in case you have made a mistake as it is a large form to fill out, or at the other end of the 
+			table you can delete the check record so that it is not in the application anymore, this is in case you have made a mistake or if there are any duplicates, 
+			when you click on the delete link a message box will appear to confirm to you if you are sure that they want to delete the check record.
+			At the end of the table there will be a link to add another truck maintenance check. Also if there are no entries in this 
+			table then there will be a message to say that there are no records in the truck maintenance check table so you will have to add a truck maintenance check list. 
+			The return button will take you back to the welcome page.  <br>
+			<br>
+			<br>
+			<b>Truck Maintenance Check Edit Page </b><br>
+			You can edit an existing check record by going onto the truck maintenance List Page and clicking on the edit link on the check record that you need to edit, 
+			this edit record page will display the same form as the maintenance check page however instead of the blank form, 
+			it will show the form which has already been filled in according to which edit link you have clicked on. Some of the fields will not be editable. 
+			When you click save a message box will appear to say that the record has been updated. 
+			The return button will take you back to the Check Records page.<br>
+			<br>
+			<br>
+			<b>Trailer Maintenance Check Records Page </b><br>
+			You can see all of the trailer maintenance check records that have already been added to the application. This page will display in a table all of the check records with the trailer number, date and company name.
+			By the side of each check record there will be an edit link which you can click on to edit the form in case you have made a mistake as it is a large form to fill out, 
+			or at the other end of the table you can delete the check record so that it is not in the application anymore,
+			this is in case you have made a mistake or if there are any duplicates, when you click on the delete link a message box will appear to confirm to you if you are sure that they want to delete the check record.
+			At the end of the table there will be a link to add another trailer maintenance check. 
+			Also if there are no entries in this table 
+			then there will be a message to say that there are no records in the trailer maintenance check table so you will have to add a trailer maintenance check list. 
+			The return button will take you back to the welcome page.<br>
+			<br>
+			<br>
+			<b>Trailer Maintenance Check Edit Page </b><br>
+			You can edit an existing check record by going onto the trailer maintenance List Page and
+			clicking on the edit link on the check record that you need to edit, this edit record page will 
+			display the same form as the maintenance check  page however instead of the blank form, it will show the form which has already been filled in according to which
+			edit link you have clicked on. Some of the fields will not be editable. When you click save a message box will appear to say that the record has been updated. 
+			The return button will take you back to the Check Records page. <br>
+			<br>
+			<br>
+			<b>About Page</b><br>
+			The about page describes what Track-A-Truck does. The return button will take you back to the Index page
+			if you are not logged in to your account or if you are logged in the return button will take you back to the Welcome Page.<br>
+			<br>
+			<br>
+			<b>Contact Page</b><br>
+			This will display the contact details of Track-A-Truck in case users find a problem. 
+			The return button will take you back to the Index page if you are not logged in to your account
+			or if you are logged in the return button will take you back to the Welcome Page.<br>
+			<br>
+			<br>
+			<b>Help Page</b><br>
+			The help guide will include a document of a step by step guide as to how the application works. The return button will take you back to 
+			the Index page if you are not logged in to your account or if you are logged in the return button will take you back to the Welcome Page.<br>
+			<br>
+			<br>
+			<b>Settings Page</b><br>
+			The settings page is if you want to display only the MOT’s or Tax or maintenance checks entries.
+			Also there will be a chance for you to change the password. 
+			The return button will take you back to the Welcome Page.<br>
+			<br>
+			<br>
+			<b>Log Out Page</b><br>
+			When you click on the log out button in the application this page will display. 
+			This shows that you have successfully logged out of your account. The return button will take you back to the Index page, in which you are able to log back
+			into your account.<br> 
+	</p>
+	<a class = "return" href="{% url 'index' %}">Return</a>
+</body>
+
+<!-- Logout and Return Buttons will only display if the user is logged in-->
+<footer>
+	{% if user.is_authenticated %}
+		<a class = "logout" href="{% url 'logout' %}">Logout</a>
+		<a class = "return" href="{% url 'welcome' %}">Return</a>
+	{% endif %}
+</footer>
+
+{% endblock content %}

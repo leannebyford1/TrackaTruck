@@ -1,0 +1,51 @@
+{% extends "Calendar/base.html" %}
+<!-- ... -->
+
+{% block title %}Main{% endblock %}
+
+
+{% block head %}{% endblock %}
+
+
+{% block content %}
+	<a href="{% url 'admin:index' %}">Admin</a>
+	<a href="{% url 'index' %}">Logout</a>
+	{% if user.is_authenticated %}
+		<h1>Hello {{ user.username }}!</h1>
+	{% else %}
+		<h1>Hello anonymous!</h1>
+	{% endif %}
+
+	<p align="center"><a href="{% url 'main' year|add:'-1' %}">&lt;&lt; Prev</a>
+	<a href="{% url 'main' year|add:'1' %}">Next &gt;&gt;</a></p>
+	<STYLE> a {text-decoration:none} </STYLE>
+{% for year, months in years %}
+    <h1><p align="center">{{ year }}</p></h1>
+    <table border="5" align="center" width="80%">
+	<tr height="150px width="200px">{% for month in months %}
+	    <td align = "center" width="100px" class= {% if day == 0 %}"empty"{% endif %}
+            	{% if month.current %}"current"
+			onMouseOver="this.bgColor='yellow';"
+                	onMouseOut="this.bgColor='white';"
+		{% endif %}
+            	{% if not month.current %}
+			"month"
+			onMouseOver="this.bgColor='yellow';"
+                	onMouseOut="this.bgColor='white';"
+		{% endif %} >
+                {% if month.entry %}<b>{% endif %}
+			<font size="5">
+                	<a href="{% url 'month' year month.n %}">{{ month.name }}</a>
+			</font>
+                {% if month.entry %}</b>{% endif %}
+		
+             	{% if month.n == 6 %}<br></tr><tr height="150px" width="200px">{% endif %}
+		
+	
+            	    {% endfor %}</td>
+	</tr>
+    </table> 
+
+   {% endfor %}
+{% endblock %}
+

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% load staticfiles %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+		{% if user.is_superuser %}
+			<li><a class="nav" href="{% url 'admin:index' %}">Admin</a></li>
+		{% endif %}
+			<li><a href="{% url 'about' %}">About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>	
+			<li><a href="{% url 'help' %}">Help</a></li>
+			<li><a href="{% url 'settings' %}">Settings</a></li>
+	</ul>
+</head>
+
+<!--Main body of the page-->
+<body>
+	{% if user.is_authenticated %}
+		<p class = "greeting">Welcome <i>{{ user.username }}</i> to Track-A-Truck</p>
+	{% else %}
+		<p class = "greeting"> Welcome to Track-A-Truck</p>
+	{% endif %}
+
+	<a class = "truck" href="{% url 'truck' %}">Add Truck</a>
+
+	<a class = "trailer" href="{% url 'trailer' %}">Add Trailer</a>
+
+	<p class = "text" style = "text-align:center;"><b>Welcome to Track-A-Truck.</b> <br> Click on the buttons above to Add a Truck or Trailer 
+				to your account, or the buttons below to access your Tracker, 
+				Calendar and Maintenance Check Sheets.</p>
+				
+	<p class = "company">Company Name: <i>{{ user.profile.company_Name }}</i> </p>
+
+	<a class = "tracker" href="{% url 'tracker' %}">Tracker</a>
+	<a class = "calendar" href="{% url 'calendar' %}">Calendar</a>
+	<a class = "maintenance" href="{% url 'maintenance' %}">Maintenance Check Sheets</a>
+	<a class = "truck_list" href="{% url 'truck_list' %}">Trucks</a>
+	<a class = "trailer_list" href="{% url 'trailer_list' %}">Trailers</a>
+	<a class = "record" href="{% url 'record_list' %}">Records</a>
+</body>
+
+<footer>
+	<a class = "logout" href="{% url 'logout' %}">Logout</a>
+</footer>
+
+{% endblock content %}

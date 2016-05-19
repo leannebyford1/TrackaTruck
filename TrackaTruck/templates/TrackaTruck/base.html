@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Track-A-Truck</title>
+    <link rel="stylesheet" href="{% static "style.css" %}">
+    <div id = "logo">
+    	<img src="{% static "logo.gif" %}" alt="Logo"/>
+    </div>
+</head>
+
+<body>
+            <h1>Track-A-Truck</h1>
+            
+       <div id="bar">
+	
+	</div>
+
+	<div id="footer">
+			
+	
+	</div>
+
+
+	<div class="large-8 columns">
+            {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,104 @@
+<title>Month View</title>
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% load staticfiles %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+		<!-- if the user is logged in and is Admin the Admin Link will display -->
+		{% if user.is_superuser %}
+			<li><a class="nav" href="{% url 'admin:index' %}">Admin</a></li>
+		{% endif %}
+			<li><a href="{% url 'about' %}">About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>	
+			<li><a href="{% url 'help' %}">Help</a></li>
+			<li><a href="{% url 'settings' %}">Settings</a></li>
+	</ul>
+
+	<!--Title of the page -->
+	<div id = "monthheading">
+	<p>{{ monthName }} {{  year }} </p>
+	</div>
+</head>
+
+<!--Main body of the page-->
+
+<body>
+{% if reminders %}
+<table border = "5px" align = "center">
+<tr><th style = "border-color:red;"><strong>Reminders</strong></th></tr>
+    			<td style = "border-color:red; font-size:90%;">{% for reminder in reminders %}<p>{{ reminder.title }} {% endfor %}</p></td>					
+</table>
+{% endif %}
+<div id ="month">
+	<table border="5px" align="center" width="80%">
+		<tr align="center">
+			<th width="50px" height="30px" bgcolor="#0098cc" class="empty">Monday</th>
+			<th width="50px" height="30px" bgcolor="#0098cc" class="empty">Tuesday</th>
+			<th width="50px" height="30px" bgcolor="#0098cc" class="empty">Wednesday</th>
+			<th width="50px" height="30px" bgcolor="#0098cc" class="empty">Thursday</th>
+			<th width="50px" height="30px" bgcolor="#0098cc" class="empty">Friday</th>
+			<th width="50px" height="30px" bgcolor="#0098cc" class="empty">Saturday</th>
+			<th width="50px" height="30px" bgcolor="#0098cc" class="empty">Sunday</th>
+		</tr>
+        
+		{% for week in month_Days %}
+			<!-- Table Style -->
+			<tr>
+			{% for day, record, current, bankholiday, weekDay, hName in week %}
+				<td width = "100px" height = "110px" 
+				class = {% if day != 0 %}
+					"empty"
+				{% endif %}
+				{% if day != 0 and current %}"current"
+					onClick = "parent.location = '{% url 'record' year month day %}'"
+					onMouseOver="this.bgColor='#0098cc';"	
+					onMouseOut="this.bgColor='white';"
+				{% endif %}
+				 {% if day != 0  %} "day"
+					onClick = "parent.location = '{% url 'record' year month day %}'"
+					onMouseOver="this.bgColor='grey';"
+					onMouseOut="this.bgColor='white';"
+				{% endif %}
+				{% if not weekDay %}
+					<td style = "background-color: #ffffcc;">
+				{% endif %}
+				<!--{% if bankholiday and weekDay %}
+					<td style = "background-color: #ffb3b3;"> <font size="2"; color="green"><i></i></font>-->
+					
+				{% endif %}
+				
+			<!-- Day number -->
+			{% if day != 0  %} {{ day }}<br> <font size="2"; color="red"><i>{{ hName }}</i></font>{% endif %}
+			<p>{{ record }}</p>
+			
+			
+			
+				</td>
+			{% endfor %}
+
+			</tr>
+		{% endfor %}
+	</table>
+	<p align="center">
+	<a class = "prev"  href="{% url 'month' year month|add:'-1'  %}">Previous Month</a>
+	<a class = "next" href="{% url 'month' year month|add:'1' %}">Next Month</a>
+	</p>
+</div>
+</div>
+</body>
+
+<!--Logout and Return Buttons -->
+<footer>
+	<a class = "logout" href="{% url 'logout' %}">Logout</a>
+	<a class = "return" href="{% url 'calendar' %}">Return</a>
+</footer>
+
+
+
+{% endblock content %}

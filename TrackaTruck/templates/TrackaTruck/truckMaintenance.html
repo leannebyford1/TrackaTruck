@@ -1,0 +1,943 @@
+<title>Truck Maintenance Check Sheet </title>
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% load staticfiles %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+		<!-- if the user is logged in and is Admin the Admin Link will display -->
+		{% if user.is_superuser %}
+			<li><a class="nav" href="{% url 'admin:index' %}">Admin</a></li>
+		{% endif %}
+			<li><a href="{% url 'about' %}">About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>	
+			<li><a href="{% url 'help' %}">Help</a></li>
+			<li><a href="{% url 'settings' %}">Settings</a></li>
+	</ul>
+
+	<!--Title of the page -->
+	<h2>Road Haulage Association Limited - <br> Powered Vehicle Safety Inspection & Maintenance Form</h2>
+</head>
+
+<!--Main body of the page-->
+<body>
+	<div id = "truckmaintenanceform">
+		<form id="truckmain" method="POST">
+			{% csrf_token %}
+			<div class = "styled-select">
+				<fieldset>
+					<legend><b>Company Details:</b></legend>
+					<p>Company Name: {{ form.company_Name }}</p>
+					<p>Address: {{ form.address }} </p>
+				</fieldset>
+				<fieldset>
+					<legend><b>Vehicle Details:</b></legend>
+					<p>Vehicle Registration: {{ form.vehicle_Reg }}</p>
+					<p>Make of Vehicle: {{ form.make }}</p>
+					<p>Model of Vehicle: {{ form.model }}</p>
+					<p>Odo Reading: {{ form.odo_Reading }} Miles/KM</p>
+					<p>Chassis Number: {{ form.chassis }}</p>
+				</fieldset>
+				
+				<fieldset>
+				<legend><b>Dates:</b></legend>
+					<p>Last Two Year Date: {{ form.last_Two_Year_Date }}</p>
+					<p>Inspection Date: {{ form.inspection_Date }}</p>
+					<p>Tachograph Calibration: {{ form.tachograph_Calibration }}</p>
+					<p>V.E.D Expiry Date: {{ form.ved_Expiry }}</p>
+				</fieldset>
+				
+				<fieldset>
+				<legend><b> Part 1: INSPECTION:</b></legend>
+				<table>
+					<tr>
+						<th>Inside Cab </th>
+						<th>Marking Code</th>
+					   <th>IM NO</th>
+					</tr>
+					<tr>
+						<td>DFT Plate - Condition Details</td>
+						<td> {{ form.dFT_Plate_Condition_Details }}</td>
+						<td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Speed Limiter Plate - Condition Details</td>
+					   <td> {{ form.speed_Limiter_Plate_Condition_Details }}</td>
+					   <td>33</td>
+					</tr>
+					<tr>
+					   <td> Seat Belts and Supplementary Restraint Systems - Condition</td>
+					   <td> {{ form.seat_Belts_Supplementary_Restraint_Systems_Condition }}</td>
+					   <td>3</td>
+					</tr>
+					<tr>
+					   <td>Cab Floor and Steps</td>
+					   <td>{{ form.cab_Floor_and_Steps }}</td> 
+					   <td>17</td>
+					</tr>
+					<tr>
+					   <td>Seats - Driver Seat All Adjustments Fully Functional</td>
+					   <td> {{ form.seats_Driver_Seat_All_Adjustments_Fully_Functional }}</td>
+					   <td>18</td>
+					</tr>
+					<tr>
+					   <td>Other seats and Crew Amenities </td>
+					   <td> {{ form.other_Seats_and_Crew_Amenities }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Internal Mirrors </td>
+					   <td> {{ form.mirrors_Internal }}</td>
+					   <td>22</td>
+					</tr>
+					<tr>
+					   <td>View to Front </td>
+					   <td> {{ form.view_To_Front }}</td>
+					   <td>23</td>
+					</tr>
+					<tr>
+					   <td>Condition Of Glass (Screen/Windows) </td>
+					   <td> {{ form.condition_Of_Glass }}</td>
+					   <td>23</td>
+					</tr>
+					<tr>
+					   <td>Screen Wipers & Washers </td>
+					   <td> {{ form.screen_Wipers }}</td>
+					   <td>25</td>
+					</tr>
+					<tr>
+					   <td>Speedometer/Tachograph - Operation - Seals - Plaque Detail </td>
+					   <td> {{ form.speedometer }}</td>
+					   <td>26</td>
+					</tr>
+					<tr>
+					   <td>Engine Tachometer </td>
+					   <td> {{ form.engine_Tachometer }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Audible Warning - Horn </td>
+					   <td> {{ form.audible_Warning }}</td>
+					   <td>27</td>
+					</tr>
+					<tr>
+					   <td>Driving Controls</td>
+					   <td> {{ form.driving_Controls }}</td>
+					   <td>28</td>
+					</tr>
+					<tr>
+					   <td>Steering Wheel - Free Play </td>
+					   <td> {{ form.steering_Wheel_Free }}</td>
+					   <td>30</td>
+					</tr>
+					<tr>
+					   <td>Steering Wheel - Security Condition - Dust Covers </td>
+					   <td> {{ form.steering_Wheel_Security }}</td>
+					   <td>30</td>
+					</tr>
+					<tr>
+					   <td>Steering Column </td>
+					   <td> {{ form.steering_Column }}</td>
+					   <td>30</td>
+					</tr>
+					<tr>
+					   <td>Anti-Theft Locks </td>
+					   <td> {{ form.anti_Theft }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Pressure/Vacuum -  Warning </td>
+					   <td> {{ form.pressure_Warning }}</td>
+					   <td>34</td>
+					</tr>
+					<tr>
+					   <td>Pressure/Vacuum - Build Up </td>
+					   <td> {{ form.pressure_Build }}</td>
+					   <td>34</td>
+					</tr>
+					<tr>
+					   <td>Other Gauges - Warning Devices</td>
+					   <td> {{ form.other_Gauges }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Hand Lever, Controlling Mechanical Brake Systems</td>
+					   <td> {{ form.hand_Lever }}</td>
+					   <td>36</td>
+					</tr>
+					<tr>
+					   <td>Service Brake Pedal </td>
+					   <td> {{ form.service_Brake }}</td>
+					   <td>37</td>
+					</tr>
+					<tr>
+					   <td>Service Brake - ABS/ESC/EBS/Warning Lights(MIL)Malfunction Indicator Lights </td>
+					   <td> {{ form.service_Brake_ABS }}</td>
+					   <td>38</td>
+					</tr>
+					<tr>
+					   <td>Hand Operated Brake Control Valves </td>
+					   <td> {{ form.hand_Operated_Brake }}</td>
+					   <td>39</td>
+					</tr>
+					<tr>
+					   <td>Electrical Wiring/Equipment/Switches </td>
+					   <td> {{ form.electrical_Wiring }}</td>
+					   <td>42</td>
+					</tr>
+					<tr>
+					   <td>Front Fog and AUX Lamp Switches </td>
+					   <td> {{ form.front_Fog }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Panel/Interior Lamps and Switches </td>
+					   <td> {{ form.panel }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Cab Heater/Demister/Air Conditioning </td>
+					   <td> {{ form.cab_Heater }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <th>Cab Exterior</th>
+					   <th>Marking Code</th>
+					   <th>IM NO</th>
+					</tr>
+					<tr>
+					   <td>Bumper (Front)</td>
+					   <td> {{ form.bumper }}</td>
+					   <td>9</td>
+					</tr>
+					<tr>
+					   <td>Condition of Wings/Spray Suppression (Front)</td>
+					   <td> {{ form.condition_Of_Wings }}</td>
+					   <td>14</td>
+					</tr>
+					<tr>
+					   <td>Cab Panels and Trim, Heated Mirrors If Fitted</td>
+					   <td> {{ form.cab_Panels }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Cab Security Including Tilt Warning</td>
+					   <td> {{ form.cab_Security }}</td>
+					   <td>15</td>
+					</tr>
+					<tr>
+					   <td>Cab Doors Including Hinges, Locks</td>
+					   <td> {{ form.cab_Doors }}</td>
+					   <td>16</td>
+					</tr>
+					<tr>
+					   <td>Cab Floor and Steps</td>
+					   <td> {{ form.cab_Floor }}</td>
+					   <td>17</td>
+					</tr>
+					<tr>
+					   <td>Mirrors and Indirect Vision Devices(External)</td>
+					   <td> {{ form.mirrors_and_Indirect }}</td>
+					   <td>22</td>
+					</tr>
+					<tr>
+					   <td>Front Lamps (Side Lamps) and Outline Markers</td>
+					   <td> {{ form.front_Lamps }}</td>
+					   <td>63</td>
+					</tr>
+					<tr>
+					   <td>Headlamps - Operation - Aim - Adjustment Mechanism</td>
+					   <td> {{ form.headlamps }}</td>
+					   <td>67</td>
+					</tr>
+					<tr>
+					   <td>Front Fog and Spot Lamps,Dim/Dip Device and Operational Main Beam Warning Light</td>
+					   <td> {{ form.spot_Lamps }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <th>Engine Compartment</th>
+					   <th>Marking Code</th>
+					   <th>IM NO</th>
+					</tr>
+					<tr>
+					   <td>Engine Mountings</td>
+					   <td> {{ form.engine_Mountings }}</td>
+					   <td>43</td>
+					</tr>
+					<tr>
+					   <td>Oil Leaks</td>
+					   <td> {{ form.oil_Leaks }}</td>
+					   <td>44</td>
+					</tr>
+					<tr>
+					   <td>Fuel Tanks and Systems</td>
+					   <td> {{ form.fuel_Tanks }}</td>
+					   <td>45</td>
+					</tr>
+					<tr>
+					   <td>Exhaust Systems</td>
+					   <td> {{ form.exhaust_Systems }}</td>
+					   <td>46</td>
+					</tr>
+					<tr>
+					   <td>Exhaust Brake</td>
+					   <td> {{ form.exhaust_Brakes }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Radiator Mounting</td>
+					   <td> {{ form.radiator_Mounting }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Cooling System</td>
+					   <td> {{ form.cooling_System }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Fan, Generator, AUX Belts</td>
+					   <td> {{ form.fan }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Fuel Pump Linkage Seals and EDC Equipment</td>
+					   <td> {{ form.fuel_Pump }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Speed Limiter - Condition - Seals - Linkage</td>
+					   <td> {{ form.speed_Limiter }}</td>
+					   <td>33</td>
+					</tr>
+					<tr>
+					   <td>Injectors, Pipes, Filters</td>
+					   <td> {{ form.injectors }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Air Intake System - Turbocharger Intercooler and Filters</td>
+					   <td> {{ form.air_Intake }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Air Compressor - Exhauster - Drive Belts (If Applicable)</td>
+					   <td> {{ form.air_Compressor }}</td>
+					   <td>59</td>
+					</tr>
+					<tr>
+					   <th>Ground Level</th>
+					   <th>Marking Code</th>
+					   <th>IM NO</th>
+					</tr>
+					<tr>
+					   <td>Road Wheels and Hubs</td>
+					   <td> {{ form.road_Wheels }}</td>
+					   <td>6</td>
+					</tr>
+					<tr>
+					   <td>Sideguards and Rear Underrun Guards</td>
+					   <td> {{ form.sideguards }}</td>
+					   <td>9</td>
+					</tr>
+					<tr>
+					   <td>Spare Wheel Carrier (and Spare Wheel)</td>
+					   <td> {{ form.spare_Wheel }}</td>
+					   <td>10</td>
+					</tr>
+					<tr>
+					   <td>Vehicle to Trailer Coupling</td>
+					   <td> {{ form.vehicle_To_Trailer }}</td>
+					   <td>11/12</td>
+					</tr>
+					<tr>
+					   <td>Condition of Wings/Spray Suppression(Rear)</td>
+					   <td> {{ form.condition_Of_Wings_Back }}</td>
+					   <td>14</td>
+					</tr>
+					<tr>
+					   <td>Security/Condition Of Body</td>
+					   <td> {{ form.security_Of_Body }}</td>
+					   <td>19/20</td>
+					</tr>
+					<tr>
+					   <td>Demountable Bodies - Chassis Mounted Equipment</td>
+					   <td> {{ form.demountable_Bodies }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Security Of Body, Containers and Crane Support Legs</td>
+					   <td> {{ form.security_Of_Body }}</td>
+					   <td>19</td>
+					</tr>
+					<tr>
+					   <td>Tipping Gear - Hydraulic Rams, Pivots and Safety Devices</td>
+					   <td> {{ form.tipping_Gear }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Tailboard Hoists</td>
+					   <td> {{ form.tailboard }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Cranes, Gantries</td>
+					   <td> {{ form.cranes }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Other Ancillary Equipment</td>
+					   <td> {{ form.ancillary_Equipment }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <th>Under/Alongside Vehicle</th>
+					   <th>Marking Code</th>
+					   <th>IM NO</th>
+					</tr>
+					<tr>
+					   <td>Chassis - Condition</td>
+					   <td> {{ form.condition_Of_Chassis }}</td>
+					   <td>41</td>
+					</tr>
+					<tr>
+					   <td>Electrical Wiring Equipment Including Batteries</td>
+					   <td> {{ form.wiring_Electrical }}</td>
+					   <td>42</td>
+					</tr>
+					<tr>
+					   <td>Electrical Connections for Trailer</td>
+					   <td> {{ form.electrical_Connections }}</td>
+					   <td>42</td>
+					</tr>
+					<tr>
+					   <td>Oil Leaks</td>
+					   <td> {{ form.leak_Oil }}</td>
+					   <td>44</td>
+					</tr>
+					<tr>
+					   <td>Fuel Tanks and Systems</td>
+					   <td> {{ form.fuel_Tanks_Systems }}</td>
+					   <td>45</td>
+					</tr>
+					<tr>
+					   <td>Exhaust System</td>
+					   <td> {{ form.exhaust_System }}</td>
+					   <td>46</td>
+					</tr>
+					<tr>
+					   <td>Suspension Pins and Bushes - Condition</td>
+					   <td> {{ form.suspension_Pins }}</td>
+					   <td>48</td>
+					</tr>
+					<tr>
+					   <td>Suspension Units, Linkages and Dust Covers - Condition</td>
+					   <td> {{ form.suspension_Units }}</td>
+					   <td>48</td>
+					</tr>
+					<tr>
+					   <td>Spring Units, Dust Covers, Linkages and Sub-Frames - Security</td>
+					   <td> {{ form.spring_Units }}</td>
+					   <td>48</td>
+					</tr>
+					<tr>
+					   <td>Shock Absorbers</td>
+					   <td> {{ form.shock_Absorbers }}</td>
+					   <td>48</td>
+					</tr>
+					<tr>
+					   <td>Wheel Bearings and Seals (Rear)</td>
+					   <td> {{ form.wheel_Bearings }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Stub Axle and Wheel Bearings</td>
+					   <td> {{ form.stub_Axle }}</td>
+					   <td>53</td>
+					</tr>
+					<tr>
+					   <td>Steering Mechanism - Lock Function</td>
+					   <td> {{ form.steering_Mechanism }}</td>
+					   <td>54</td>
+					</tr>
+					<tr>
+					   <td>Steering Alignment</td>
+					   <td> {{ form.steering_Alignment }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Steering Gear and Dust Covers</td>
+					   <td> {{ form.steering_Gear }}</td>
+					   <td>54</td>
+					</tr>
+					<tr>
+					   <td>Power Steering and Fluid Levels - MIL</td>
+					   <td> {{ form.power_Steering }}</td>
+					   <td>54</td>
+					</tr>
+					<tr>
+					   <td>Axle Alignment</td>
+					   <td> {{ form.axle_Alignment }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Clutch Operation</td>
+					   <td> {{ form.clutch_Operation }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Gearbox and Bell Housing</td>
+					   <td> {{ form.gearbox }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Changing Speed Mechanism</td>
+					   <td> {{ form.changing_Speed }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Power Take-Off</td>
+					   <td> {{ form.power_Take }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Final Drive</td>
+					   <td> {{ form.final_Drive }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>2 - Speed Shift Mechanism</td>
+					   <td> {{ form.speed_Shift }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Differential Lock - Traction Control</td>
+					   <td> {{ form.differential_Lock }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Load Transfer/Axle Lift Device</td>
+					   <td> {{ form.load_Transfer }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Transmission - Drive Line - Mountings - Dust Covers</td>
+					   <td> {{ form.transmission }}</td>
+					   <td>57</td>
+					</tr>
+					<tr>
+					<tr>
+					   <th>Brakes</th>
+					   <th>Marking Code</th>
+					   <th>IM NO</th>
+					</tr>
+					<tr>
+					   <td>Electronic Braking System/Electronic Stability Control - Operation/Warning</td>
+					   <td> {{ form.electronic_Braking }}</td>
+					   <td>38</td>
+					</tr>
+					<tr>
+					   <td>Hydraulic Fluid Level</td>
+					   <td> {{ form.hydraulic_Fluid }}</td>
+					   <td>59</td>
+					</tr>
+					<tr>
+					   <td>Mechanical Brake Components</td>
+					   <td> {{ form.mechanical_Brake }}</td>
+					   <td>59</td>
+					</tr>
+					<tr>
+					   <td>Drums and Linings/Disc and Pads</td>
+					   <td> {{ form.drum_Lining }}</td>
+					   <td>59</td>
+					</tr>
+					<tr>
+					   <td>Brake Actuators and Adjusters - Dust Covers</td>
+					   <td> {{ form.brake_Actuators }}</td>
+					   <td>59</td>
+					</tr>
+					<tr>
+					   <td>Brake Systems and Components</td>
+					   <td> {{ form.brake_Systems }}</td>
+					   <td>59</td>
+					</tr>
+					<tr>
+					   <td>Trailer Coupling, Hoses and Function of Self Sealing Valves</td>
+					   <td> {{ form.trailer_Coupling }}</td>
+					   <td>12</td>
+					</tr>
+					<tr>
+					   <td>Load Sensing/Anti-Lock System</td>
+					   <td> {{ form.load_Sensing }}</td>
+					   <td>59</td>
+					</tr>
+					<tr>
+					   <td>Air Brake Anti-Freeze Device</td>
+					   <td> {{ form.air_Brake }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Anti-Lock Device - Operation Warning</td>
+					   <td> {{ form.anti_Lock }}</td>
+					   <td>38</td>
+					</tr>
+					<tr>
+					   <td>Operation of Supply Dump Valve</td>
+					   <td> {{ form.supply_Dump }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Operation of Multi-Circuit Protection</td>
+					   <td> {{ form.multi_Circuit }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Additional Braking Devices</td>
+					   <td> {{ form.braking_Devices }}</td>
+					   <td>58</td>
+					</tr>
+					<tr>
+					   <th>Under/Alongside Vehicle(Continued)</th>
+					   <th>Marking Code</th>
+					   <th>IM NO</th>
+					</tr>
+					<tr>
+					   <td>Rear Marking and Conspicuity Marking</td>
+					   <td> {{ form.rear_Marking }}</td>
+					   <td>62</td>
+					</tr>
+					<tr>
+					   <td>Rear Lamps, Outline Markers and Number Plate Lamp</td>
+					   <td> {{ form.rear_Lamps }}</td>
+					   <td>63</td>
+					</tr>
+					<tr>
+					   <td>Rear Fog Lamps, Including Warning Device</td>
+					   <td> {{ form.rear_Fog }}</td>
+					   <td>63</td>
+					</tr>
+					<tr>
+					   <td>Reflectors(Side and Rear)</td>
+					   <td> {{ form.reflectors }}</td>
+					   <td>62</td>
+					</tr>
+					<tr>
+					   <td>Direction/Hazard Indicators Including Warning Device</td>
+					   <td> {{ form.direction_Indicators }}</td>
+					   <td>66</td>
+					</tr>
+					<tr>
+					   <td>Side Marker Lamps</td>
+					   <td> {{ form.side_Marker }}</td>
+					   <td>63</td>
+					</tr>
+					<tr>
+					   <td>Stop Lamps</td>
+					   <td> {{ form.stop_Lamps }}</td>
+					   <td>63</td>
+					</tr>
+					<tr>
+					   <td>Reversing Lamps</td>
+					   <td> {{ form.reversing_Lamps }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Position Lamps, Headlamps an Warning Device</td>
+					   <td> {{ form.position_Lamps }}</td>
+					   <td>63</td>
+					</tr>
+					<tr>
+					   <td>Other Lamps</td>
+					   <td> {{ form.other_Lamps }}</td>
+					   <td>  </td>
+					</tr>
+					<tr>
+					   <td>Paintwork and Livery - Condition</td>
+					   <td> {{ form.paintwork }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Licences</td>
+					   <td> {{ form.licences }}</td>
+					   <td>  </td>
+					</tr>
+					<tr>
+					   <td>Legal Writing</td>
+					   <td> {{ form.legal_Writing }}</td>
+					   <td bgcolor="#e6e6e6">  </td>
+					</tr>
+					<tr>
+					   <td>Registration Plates - Secure, Complete and Legible</td>
+					   <td> {{ form.reg_Plates }}</td>
+					   <td>1</td>
+					</tr>
+					<tr>
+					   <td>Other Dangerous Defects</td>
+					   <td> {{ form.other_Dangerous }}</td>
+					   <td>74</td>
+					</tr>
+					<tr>
+					   <th>Smoke Emission</th>
+					   <th>{{ form.smoke_Emission }}</th>
+					   <th>5</th>
+					</tr>
+					<tr>
+					   <th>Tyres</th>
+					   <th>Marking Code</th>
+					   <th>IM NO</th>
+					</tr>
+					<tr>
+					   <td>Size and Type of Tyres, Drive Axle Tyres Comply with Calibration Plaque</td>
+					   <td> {{ form.size_Of_Tyre }}</td>
+					   <td>26 <br> 7</td>
+					</tr>
+					<tr>
+					   <td>Condition of Tyres</td>
+					   <td> {{ form.condition_Of_Tyre }}</td>
+					   <td>8</td>
+					</tr>
+				</table>
+				</fieldset>
+				
+				<fieldset>
+					<legend><b>Part 2: RECTIFICATION</b></legend>
+					<table>
+						<tr>
+							<th>Details of Faults</th>
+						   <th>IM NO</th>
+						   <th>Action Taken to Rectify Faults</th>
+						   <th>Done By</th>
+						</tr>
+						<tr>
+						   <td>1.Needing Immediate Attention</td>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td bgcolor="#e6e6e6">  </td>
+						</tr>
+						<tr>
+						   <td placeholder="Please Fill in this Cell">{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>2.Less Urgent - For Early Attention</td>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td bgcolor="#e6e6e6">  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <td>{{ form.attention }}</td>
+						   <td>{{ form.imo_No }}  </td>
+						   <td>{{ form.action }} </td>
+						   <td>{{ form.done_By }}  </td>
+						</tr>
+						<tr>
+						   <th colspan ="2">Signature of Inspector  </th>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td bgcolor="#e6e6e6">  </td>						   
+						</tr>
+						<tr>
+						   <td colspan = "2">{{ form.signature_Of_Inspector }}</td>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td bgcolor="#e6e6e6">   </td>
+						</tr>
+						<tr>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td color="red"> <i>I consider the above defects have been rectified satisfactory and the vehicle is now in a safe and 
+								roadworthy condition.</i></td>
+						   <th> Date Completed:</th>
+						</tr>
+						<tr>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td>{{ form.date_Completed }}  </td>
+						</tr>
+						<tr>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <th>Signature  </th>
+						   <td>{{ form.signature }}  </td>
+						</tr>
+						<tr>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <th>Position </th>
+						   <td>{{ form.position }}  </td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+						   <th>Brake Performance IM NOS 71,72,73</th>
+						   <td bgcolor="#e6e6e6">   </td>
+						   <th>Load Condition of Vehicle</th>
+						   <td bgcolor="#e6e6e6">  </td>
+						</tr>
+
+						<tr>
+						   <td>Decelerometer Test* <br>
+							@ {{ form.test }} kph* <br>
+							  {{ form.test }} mph* <br>
+								  Roller Brake Test* <br>
+								  Recommended as a Minimum Check Every Six Months </td>
+						   <td> Road Speed Limiter (Operational) <br>{{ form.road_Speed }} - <br> 
+							Set Speed {{ form.speed }} mph*/kph*</td>
+						   <td>Laden* Unladen*</td>
+						   <td bgcolor="#e6e6e6"> </td>
+						</tr>
+						<tr>
+							<td bgcolor="#e6e6e6">  </td>
+							<th colspan="3">Road Conditions</th>
+						</tr>
+						<tr>
+							<td bgcolor="#e6e6e6">  </td>
+							<td>Service <br> {{ form.percent }} %</td>
+							<td>Secondary <br>  {{ form.percent }} %</td>
+							<td>Parking <br> {{ form.percent }} %</td>
+						</tr>
+						</tr>
+							<td bgcolor="#e6e6e6">  </td>
+							<td bgcolor="#e6e6e6">  </td>
+							<td bgcolor="#e6e6e6">  </td>
+							<td> Comments: <br> {{ form.comments }} </td>
+						</tr>
+						<tr>
+						   <th colspan = "2">Road Test - Overall Comments </th>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td bgcolor="#e6e6e6">  </td>
+						</tr>
+						<tr>
+						   <td colspan = "2"> {{ form.comments }} </td>
+						   <td bgcolor="#e6e6e6">  </td>
+						   <td>Testers Signature: {{ form.signature }}   </td>
+						</tr>
+					</table>
+				</fieldset>
+				<fieldset>
+				<legend><b> Additional Notes</b></legend>
+
+					<p> NOTE: IT IS ALWAYS THE RESPONSIBILITY OF THE OPERATOR THAT THE VEHICLE IS IN A ROADWORTHY CONDITION 
+						 BEFORE BEING USED ON THE ROAD </p>
+					<table>
+						<tr>
+						   <th> Optional</th>
+						   <td bgcolor="#e6e6e6">  </td>
+						</tr>
+						<tr>
+						   <td>Digital Tachograph </td>
+						   <td bgcolor="#e6e6e6">  </td>
+						</tr>
+						<tr>
+						   <td>Data Download</td>
+						   <td> {{ form.options }} </td>
+						</tr>
+					</table>
+				</fieldset>
+			</div>
+			<div id="button">
+				<input type="submit" value="Save" /> 
+				<input type = "reset" value = "Reset"/>
+			</div>
+		</form>
+	</div>
+	</div>
+</body>
+
+<!--Logout and Return Buttons -->
+<footer>
+	<a class = "logout" href="{% url 'logout' %}">Logout</a>
+	<a class = "return" href="{% url 'maintenance' %}">Return</a>
+</footer>
+
+{% endblock content %}

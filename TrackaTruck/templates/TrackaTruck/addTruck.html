@@ -1,0 +1,58 @@
+<title>Add Truck </title>
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% block head %}
+
+{% block title %} {{ block.super}}{% endblock %}{% endblock %}
+
+{% load l10n %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+		<!-- if the user is logged in and is Admin the Admin Link will display -->
+		{% if user.is_superuser %}
+			<li><a class="nav" href="{% url 'admin:index' %}">Admin</a></li>
+		{% endif %}
+			<li><a href="{% url 'about' %}">About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>	
+			<li><a href="{% url 'help' %}">Help</a></li>
+			<li><a href="{% url 'settings' %}">Settings</a></li>
+	</ul>
+
+	<!--Title of the page -->
+	<h2>Add a Truck: </h2>
+</head>
+
+<!--Main body of the page-->
+<body>
+	<div id = "truckform">
+		<form id="truck" method="POST">
+			{% csrf_token %}
+			<div class = "styled-select">
+				<p>Vehicle Registration: {{ form.vehicle_Reg }}</p>
+				<p>Make of Vehicle: {{ form.make }}</p>
+				<p>Model of Vehicle: {{ form.model }}</p>
+				<p>Year of Vehicle: {{ form.year }}</p>
+			</div>
+			<div id="button">
+				<input type="submit" value="Save" onclick = "return confirm('A new Truck has been added')"/> 
+				<input type = "reset" value = "Reset"/>
+			</div>
+		</form>
+	</div>
+</body>
+
+<!--Logout and Return Buttons -->
+<footer>
+	<a class = "logout" href="{% url 'logout' %}">Logout</a>
+	<a class = "return" href="{% url 'welcome' %}">Return</a>
+</footer>
+
+{% endblock %}
+
+

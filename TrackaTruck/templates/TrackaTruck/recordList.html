@@ -1,0 +1,82 @@
+<title>Record List </title>
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% block head %}
+
+{% block title %} {{ block.super}}{% endblock %}{% endblock %}
+
+{% load l10n %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+		<!-- if the user is logged in and is Admin the Admin Link will display -->
+		{% if user.is_superuser %}
+			<li><a class="nav" href="{% url 'admin:index' %}">Admin</a></li>
+		{% endif %}
+			<li><a href="{% url 'about' %}">About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>	
+			<li><a href="{% url 'help' %}">Help</a></li>
+			<li><a href="{% url 'settings' %}">Settings</a></li>
+	</ul>
+	
+	<!--Title of the page -->
+	<h2>Record List: </h2>
+</head>
+
+
+<!--Main body of the page-->
+<body>
+	<a class ="delete" href="{% url 'deleteAllRecord' %}"onclick = "return confirm('All Records will be deleted, are you sure?')">Delete All Records</a>
+	<div id = "recordlist">
+	
+	<table>
+		<tr>
+		   <!--<th>ID</th>-->
+		   <th style = "width:300px;"> Date of MOT/Tax/Maintenance Check </th>
+		   <th> Vehicle / Trailer </th>
+		   <th> Title </th>
+		   <th> Vehicle Registration </th>
+		   <th> Trailer Number </th>
+		   <th> Time of MOT </th>
+		   <th> Notes </th>
+		   <th style = "width:130px;">  </th>
+		</tr>
+
+		{% for e in obj %}
+		
+		<tr>
+		  <!-- <td> {{ e.id }} </td> -->
+		   <td><a class = "link" href="{% url 'editRecord' e.id %}"> {{ e.date }} </td>
+		   <td>{{ e.vehicle_trailer }} </td>
+		   <td> {{ e.title }} </td>
+		   <td> {{ e.vehicle_Reg }} </td>
+		   <td> {{ e.trailer_Number }} </td>
+		   <td> {{ e.time }} </td>
+		   <td> {{ e.notes }} </td>
+		   <td><a class = "link" href = "{% url 'deleteRecord' e.id %}"onclick = "return confirm('Record will be deleted, are you sure?')">Delete Record</td>
+		</tr>
+
+		{% empty %} 
+		<h3> There are no records in the Records table, please add a Record in the Calendar </h3>
+		{% endfor %}
+		
+		<!--Add Record Link-->
+		<tr>
+			<th colspan="10" style = "height:40px; color:white;"><a class ="link" href="{% url 'calendar' %}">Calendar</a></th>
+		</tr>
+	</table>
+</div>
+</body>
+
+<!--Logout and Return Buttons -->
+<footer>
+	<a class = "logout" href="{% url 'logout' %}">Logout</a>
+	<a class = "return" href="{% url 'welcome' %}">Return</a>
+</footer>
+
+{% endblock %}

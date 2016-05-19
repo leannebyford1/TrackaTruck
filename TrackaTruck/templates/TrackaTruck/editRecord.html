@@ -1,0 +1,59 @@
+<title>Edit Record </title>
+{% extends "base.html" %}
+<!-- ... -->
+
+<!-- Django commands so that each page displays the same header and loads the CSS files-->
+{% block head %}
+
+{% block title %} {{ block.super}}{% endblock %}{% endblock %}
+
+{% load l10n %}
+
+{% block content %}
+
+<!--The navigation menu -->
+<head>
+	<ul>
+		<!-- if the user is logged in and is Admin the Admin Link will display -->
+		{% if user.is_superuser %}
+			<li><a class="nav" href="{% url 'admin:index' %}">Admin</a></li>
+		{% endif %}
+			<li><a href="{% url 'about' %}">About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>	
+			<li><a href="{% url 'help' %}">Help</a></li>
+			<li><a href="{% url 'settings' %}">Settings</a></li>
+	</ul>
+
+	<!--Title of the page -->
+	<h2>Edit Record: </h2>
+</head>
+
+<!--Main body of the page-->
+<body>
+	<div id = "recordform">
+		<form id="record" method="POST">
+			{% csrf_token %}
+			<div class = "styled-select">
+				<p> Vehicle / Trailer: {{ form.vehicle_trailer }}</p>
+				<p>Title: {{ form.title }}</p>
+				<p>Vehicle Registration: {{ form.vehicle_Reg }}<strong><font size="2"; color="red"> * Only Required when Truck is selected</font></strong></p>
+				<p>Trailer Number: {{ form.trailer_Number }}<strong><font size="2"; color="red"> * Only Required when Trailer is selected</font></strong></p>
+				<p>Date: {{ form.date }}</p>
+				<p>Time: {{ form.time }} <strong><font size="2"; color="red"> * Only Required when Title is MOT</font></strong></p>
+				<p>Notes: {{ form.notes }}</p>
+				<p>Reminder: {{ form.reminder }}</p>
+			</div>
+			<div id="button">
+				<input type="submit" value="Save" onclick = "return confirm('Record has been updated')"/> 
+			</div>
+		</form>
+	</div>
+</body>
+
+<!--Logout and Return Buttons -->
+<footer>
+	<a class = "logout" href="{% url 'logout' %}">Logout</a>
+	<a class = "return" href="{% url 'record_list' %}">Return</a>
+</footer>
+
+{% endblock %}

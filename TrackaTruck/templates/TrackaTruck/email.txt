@@ -1,0 +1,2 @@
+Hi {{ user.username }}, You have just added the Truck: {{ form.vehicle_Reg }}, to your account.Thank you for using this application.Track-A-Truck
+
